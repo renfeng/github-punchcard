@@ -1,0 +1,23 @@
+{
+  "name": "github-punchcard",
+  "version": "0.0.2",
+  "homepage": "https://github.com/renfeng/github-punchcard",
+  "authors": [
+    "Frank R. <renfeng.cn@gmail.com>"
+  ],
+  "description": "",
+  "main": "github-punchcard.html",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "paper-button": "PolymerElements/paper-button#^2.0.0",
+    "paper-input": "PolymerElements/paper-input#^2.0.5",
+    "paper-toast": "PolymerElements/paper-toast#^2.0.0"
+  }
+}

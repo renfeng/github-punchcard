@@ -1,0 +1,43 @@
+<!-- https://github.com/Polymer/polymer/issues/1976#issuecomment-225454535 -->
+<dom-module id="svg-component">
+	<template>
+		<content select="svg-component"></content>
+	</template>
+	<script>
+    SvgComponent = Polymer({
+      is: 'svg-component',
+
+      _node: {},
+
+      _namespace: 'http://www.w3.org/2000/svg',
+
+      get rootElement () {
+        if (this.parentNode.nodeName === 'SVG-CONTAINER')
+          return this.parentNode.$.svg;
+        else
+          return this.parentNode._node;
+      },
+
+      factoryImpl: function(attributes) {
+        for (var key in attributes)
+          this.setAttribute(key, attributes[key]);
+      },
+
+      attached: function() {
+        var is = this.attributes.is.value;
+
+        if (is !== undefined) {
+          this._node = document.createElementNS(this._namespace, is);
+          for (var i = 0; i < this.attributes.length; i++) {
+            if (this.attributes[i].name !== 'is')
+              this._node.setAttribute(this.attributes[i].name, this.attributes[i].value);
+          }
+          if (this.childNodes.length == 1 && this.childNodes[0].nodeName == "#text") {
+            this._node.textContent = this.childNodes[0].textContent;
+          }
+          this.rootElement.appendChild(this._node);
+        }
+      }
+    });
+  </script>
+</dom-module>
