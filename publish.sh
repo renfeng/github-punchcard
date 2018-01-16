@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
-version=`grep -Po '(?<="version": ")[^"]+' bower.json`
+version=`cat bower.json | perl -nle 'print $& if m{(?<="version": ")[^"]+}'`
 git tag v${version}
 git push origin --tags
