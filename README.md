@@ -1,6 +1,6 @@
 [![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/renfeng/github-punchcard)
 
-## &lt;xmpp-message&gt;
+## &lt;github-punchcard&gt;
 
 `<github-punchcard>` displays a punchcard graph for a github repository.
 

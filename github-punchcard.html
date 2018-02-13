@@ -127,6 +127,10 @@
 
 			ready() {
 				super.ready();
+				this.reset();
+			}
+
+			reset() {
 				this.punchCard = [
 					[],
 					[],
@@ -139,15 +143,15 @@
 			}
 
 			load(user, repo) {
+				var self = this;
 
 				if (!user || !repo) {
+					self.reset();
 					return;
 				}
 
-				var self = this;
-
-				this.loadDebouncer = Polymer.Debouncer.debounce(
-						this.loadDebouncer,
+				self.loadDebouncer = Polymer.Debouncer.debounce(
+						self.loadDebouncer,
 						Polymer.Async.timeOut.after(1000),
 						function() {
 							self.$.message.text = "Loading";
