@@ -12,6 +12,7 @@
 <custom-element-demo>
   <template>
     <link rel="import" href="github-punchcard.html">
+    <link rel="import" href="../paper-toast/paper-toast.html">
     <next-code-block></next-code-block>
   </template>
 </custom-element-demo>
@@ -19,6 +20,19 @@
 -->
 ```html
 <github-punchcard user="polymer" repo="polymer"></github-punchcard>
+<paper-toast id="message" duration="Infinity"></paper-toast>
+<script>
+	var punchcard = document.querySelector("github-punchcard");
+	var message = document.querySelector("paper-toast");
+	punchcard.addEventListener("message", function (e) {
+		if (e.detail) {
+			message.text = e.detail.text;
+			message.open();
+		} else {
+			message.close();
+		}
+	});
+</script>
 ```
 
 > Punch Card plot is quite useful in case to support the scrum meetings planning. Because you can plan them when developers in team are not so productive. - https://coderwall.com/p/lxygqq/git-punch-card-plot-in-your-own-repo

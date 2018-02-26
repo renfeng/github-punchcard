@@ -1,4 +1,3 @@
-<link rel="import" href="../paper-toast/paper-toast.html"/>
 <!--<link rel="import" href="../polymer-svg-template/polymer-svg-template.html"/>-->
 <link rel="import" href="../polymer/polymer.html"/>
 <!--<link rel="import" href="svg-container.html" />-->
@@ -21,8 +20,6 @@
 				margin: auto;
 			}
 		</style>
-
-		<paper-toast id="message"></paper-toast>
 
 		<!-- https://stackoverflow.com/questions/4840736/easier-way-to-create-circle-div-than-using-an-image -->
 		<table>
@@ -154,8 +151,9 @@
 						self.loadDebouncer,
 						Polymer.Async.timeOut.after(1000),
 						function() {
-							self.$.message.text = "Loading";
-							self.$.message.open();
+							self.dispatchEvent(new CustomEvent("message", {
+								detail: { text: "Loading..." },
+							}));
 
 							new PunchCard().load(user, repo).then(function(punchCard) {
 								console.log(punchCard);
@@ -174,10 +172,11 @@
 										}
 									}
 								}
-								self.$.message.close();
+								self.dispatchEvent(new CustomEvent("message"));
 							}).catch(function(message) {
-								self.$.message.text = message;
-								self.$.message.open();
+								self.dispatchEvent(new CustomEvent("message", {
+									detail: { text: message },
+								}));
 							});
 						});
 			}
