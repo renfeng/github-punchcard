@@ -20,16 +20,16 @@
 -->
 ```html
 <github-punchcard user="polymer" repo="polymer"></github-punchcard>
-<paper-toast id="message" duration="Infinity"></paper-toast>
+<paper-toast id="toast" duration="Infinity"></paper-toast>
 <script>
 	var punchcard = document.querySelector("github-punchcard");
-	var message = document.querySelector("paper-toast");
-	punchcard.addEventListener("message", function (e) {
+	var toast = document.querySelector("paper-toast");
+	punchcard.addEventListener("toast", function (e) {
 		if (e.detail) {
-			message.text = e.detail.text;
-			message.open();
+			toast.text = e.detail.text;
+			toast.open();
 		} else {
-			message.close();
+			toast.close();
 		}
 	});
 </script>

@@ -151,7 +151,7 @@
 						self.loadDebouncer,
 						Polymer.Async.timeOut.after(1000),
 						function() {
-							self.dispatchEvent(new CustomEvent("message", {
+							self.dispatchEvent(new CustomEvent("toast", {
 								detail: { text: "Loading..." },
 							}));
 
@@ -172,9 +172,9 @@
 										}
 									}
 								}
-								self.dispatchEvent(new CustomEvent("message"));
+								self.dispatchEvent(new CustomEvent("toast"));
 							}).catch(function(message) {
-								self.dispatchEvent(new CustomEvent("message", {
+								self.dispatchEvent(new CustomEvent("toast", {
 									detail: { text: message },
 								}));
 							});
