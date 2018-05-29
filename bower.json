@@ -19,6 +19,8 @@
     "paper-input": "PolymerElements/paper-input#^2.0.5"
   },
   "devDependencies": {
+    "iron-component-page": "^3.0.1",
+    "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^2.0.0",
     "paper-input": "PolymerElements/paper-toast#1 - 2"
   }
 }

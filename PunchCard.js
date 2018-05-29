@@ -6,7 +6,9 @@ function PunchCard() {
 		/*
 		 * https://developer.github.com/v3/repos/statistics/#get-the-number-of-commits-per-hour-in-each-day
 		 */
-		return fetch("https://api.github.com/repos/" + user + "/" + repo + "/stats/punch_card").then(function(response) {
+		return fetch("https://api.github.com/repos/" + user + "/" + repo + "/stats/punch_card", {
+			credentials: "include"
+		}).then(function(response) {
 			if (response.status === 200 || response.status === 0) {
 				return Promise.resolve(response.json());
 			} else {
